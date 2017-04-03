@@ -111,7 +111,7 @@ void CFireworksVolleyBase::UpdateMe() {
   }
 
   bool bActive_ = true;
-  if (m_bLive && m_particleSystemQueue.size() > 0) {
+  if (m_bLive && !m_particleSystemQueue.empty()) {
     bool bLive = false;
     for each (CParticleSystem * particleSystem in m_particleSystemQueue._Get_container()) {
       particleSystem->Update();
@@ -178,7 +178,7 @@ void CFireworksVolleyBase::DrawMe() {
     return;
   }
 
-  if (m_bLive && m_particleSystemQueue.size() > 0) {
+  if (m_bLive && !m_particleSystemQueue.empty()) {
     for each (CParticleSystem * particleSystem in m_particleSystemQueue._Get_container()) {
       particleSystem->Draw();
     }
