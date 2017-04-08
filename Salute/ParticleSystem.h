@@ -8,48 +8,48 @@ class CParticle;
 
 // Система частиц
 class CParticleSystem : public CBaseObject {
- public:
-  CParticleSystem(void);
-  virtual ~CParticleSystem(void);
+  public:
+    CParticleSystem(void);
+    virtual ~CParticleSystem(void);
 
-  // метод, возращающий состояние системы частиц
-  __forceinline bool IsLive() { return m_bLive;};
+    // метод, возращающий состояние системы частиц
+    __forceinline bool IsLive() { return m_bLive;};
 
-  virtual void Live();
+    virtual void Live();
 
-  virtual void SetColor(CColor& color);
-  void SetGravitation(CVector& gravitation);
-  void SetPosition(CVector& position);
+    virtual void SetColor(CColor& color);
+    void SetGravitation(CVector& gravitation);
+    void SetPosition(CVector& position);
 
-  // метод инициализации: count - число частиц
-  virtual bool Init(uint particleCount, std::string particleClassName);
+    // метод инициализации: count - число частиц
+    virtual bool Init(uint particleCount, std::string particleClassName);
 
-  // установить св-ва для всех частиц системы
-  virtual void Apply();
+    // установить св-ва для всех частиц системы
+    virtual void Apply();
 
- protected:
-  override void UpdateMe();
+  protected:
+    virtual void UpdateMe() override;
 
-  override void DrawMe();
+    virtual void DrawMe() override;
 
-  // метод, устанавливающий св-ва частицы фейерверка
-  virtual void SetParticleProperties(CParticle* particle);
+    // метод, устанавливающий св-ва частицы фейерверка
+    virtual void SetParticleProperties(CParticle* particle);
 
- protected:
-  typedef std::vector<CParticle*> ParticleVector;
+  protected:
+    typedef std::vector<CParticle*> ParticleVector;
 
-  // список частиц
-  ParticleVector m_particleList;
+    // список частиц
+    ParticleVector m_particleList;
 
-  // состояние системы
-  bool m_bLive;
+    // состояние системы
+    bool m_bLive;
 
-  // цвет частиц
-  CColor m_oColor;
+    // цвет частиц
+    CColor m_oColor;
 
-  // гравитация
-  CVector m_oGravitation;
+    // гравитация
+    CVector m_oGravitation;
 
-  // начальная позиция
-  CVector m_oPosition;
+    // начальная позиция
+    CVector m_oPosition;
 };

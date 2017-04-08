@@ -6,36 +6,36 @@ class CParticle;
 
 // Базовый класс для залпов фейерверка
 class CFireworksVolleyBase : public CParticleSystem {
- public:
-  CFireworksVolleyBase(void);
-  virtual ~CFireworksVolleyBase(void);
+  public:
+    CFireworksVolleyBase(void);
+    virtual ~CFireworksVolleyBase(void);
 
-  // метод инициализации
-  override bool Init(uint particleCount, uint subParticleCount,
-                     std::string subParticleSystemClassName, std::string particleClassName);
+    // метод инициализации
+    virtual bool Init(uint particleCount, uint subParticleCount,
+                      std::string subParticleSystemClassName, std::string particleClassName);
 
-  override void Live();
+    virtual void Live() override;
 
- protected:
-  override void UpdateMe();
+  protected:
+    virtual void UpdateMe() override;
 
-  override void DrawMe();
+    virtual void DrawMe() override;
 
-  override void SetRocketProperties();
+    virtual void SetRocketProperties();
 
- protected:
-  // объект-ракета
-  CParticle *m_oRocketParticle;
-  // число подчастиц
-  uint m_iSubParticleCount;
+  protected:
+    // объект-ракета
+    CParticle *m_oRocketParticle;
+    // число подчастиц
+    uint m_iSubParticleCount;
 
-  typedef std::vector<CParticleSystem*> ParticleSystemVector;
-  typedef std::vector<CParticleSystem*>::iterator ParticleSystemVectorIter;
-  ParticleSystemVector m_particleSystemList;
-  ParticleSystemVectorIter m_particleSystemIter;
+    typedef std::vector<CParticleSystem*> ParticleSystemVector;
+    typedef std::vector<CParticleSystem*>::iterator ParticleSystemVectorIter;
+    ParticleSystemVector m_particleSystemList;
+    ParticleSystemVectorIter m_particleSystemIter;
 
-  typedef std::queue<CParticleSystem*> ParticleSystemQueue;
-  ParticleSystemQueue m_particleSystemQueue;
+    typedef std::queue<CParticleSystem*> ParticleSystemQueue;
+    ParticleSystemQueue m_particleSystemQueue;
 };
 
 //////////////////////////////////////////////////////////////////////////

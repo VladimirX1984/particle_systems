@@ -20,42 +20,42 @@ struct TSaluteType {
 
 //  ласс, управл€ющий салютом
 class CSaluteManager : public CBaseObject {
- public:
-  CSaluteManager(void);
-  ~CSaluteManager(void);
+  public:
+    CSaluteManager(void);
+    ~CSaluteManager(void);
 
-  void AddFireworks(uint particleCount, uint subParticleCount, std::string className,
-                    std::string subParicleSystemClassName, std::string particleClassName);
-  bool Init(uint volleysCount, uint particlesCount, uint interval);
+    void AddFireworks(uint particleCount, uint subParticleCount, std::string className,
+                      std::string subParicleSystemClassName, std::string particleClassName);
+    bool Init(uint volleysCount, uint particlesCount, uint interval);
 
- protected:
-  virtual void UpdateMe();
-  virtual void DrawMe();
+  protected:
+    virtual void UpdateMe();
+    virtual void DrawMe();
 
- private:
-  typedef std::vector<TSaluteType*> SaluteTypesVector;
-  typedef std::vector<TSaluteType*>::iterator SaluteTypesVectorIter;
-  SaluteTypesVector m_saluteTypesList;
-  SaluteTypesVectorIter saluteTypesIter;
+  private:
+    typedef std::vector<TSaluteType*> SaluteTypesVector;
+    typedef std::vector<TSaluteType*>::iterator SaluteTypesVectorIter;
+    SaluteTypesVector m_saluteTypesList;
+    SaluteTypesVectorIter saluteTypesIter;
 
- private:
-  // вектор гравитации
-  CVector m_oGravitation;
+  private:
+    // вектор гравитации
+    CVector m_oGravitation;
 
-  typedef std::vector<CFireworksVolleyBase*> FireworksVolleyVector;
-  typedef std::vector<CFireworksVolleyBase*>::iterator FireworksVolleyVectorIter;
-  // список объектов: залпов салюта (фейерверка)
-  FireworksVolleyVector m_fireworksVolleyList;
-  FireworksVolleyVectorIter fireworksVolleyIter;
+    typedef std::vector<CFireworksVolleyBase*> FireworksVolleyVector;
+    typedef std::vector<CFireworksVolleyBase*>::iterator FireworksVolleyVectorIter;
+    // список объектов: залпов салюта (фейерверка)
+    FireworksVolleyVector m_fireworksVolleyList;
+    FireworksVolleyVectorIter fireworksVolleyIter;
 
-  typedef std::queue<CFireworksVolleyBase*> FireworksVolleyQueue;
-  // список залпов салюта (фейерверка), которые были запущены
-  FireworksVolleyQueue m_fireworksVolleyQueue;
+    typedef std::queue<CFireworksVolleyBase*> FireworksVolleyQueue;
+    // список залпов салюта (фейерверка), которые были запущены
+    FireworksVolleyQueue m_fireworksVolleyQueue;
 
-  uint m_iTimer;
+    uint m_iTimer;
 
-  // число одновременных залпов салюта (фейерверка)
-  uint m_iVolleysCount;
+    // число одновременных залпов салюта (фейерверка)
+    uint m_iVolleysCount;
 
-  uint m_iInterval;
+    uint m_iInterval;
 };

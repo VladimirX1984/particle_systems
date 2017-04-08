@@ -6,43 +6,43 @@
 
 // Базовый класс для создания объектов
 class CBaseObjectCreator {
- public:
-  CBaseObjectCreator() {};
-  virtual ~CBaseObjectCreator() {};
+  public:
+    CBaseObjectCreator() {};
+    virtual ~CBaseObjectCreator() {};
 
- public:
-  virtual CBaseObject* CreateInstance() const = 0;
+  public:
+    virtual CBaseObject* CreateInstance() const = 0;
 };
 
 // Класс для создания объектов типа className
 template <class className> class CObjectCreater : public CBaseObjectCreator {
- public:
-  className* CreateInstance() const {
-    return new className;
-  };
+  public:
+    className* CreateInstance() const {
+      return new className;
+    };
 };
 
 // Базовый класс для создания объектов типа className, у которых конструктор принимает один аргумент типа CBaseObject
 class CBaseObjectCreatorByObj : public CBaseObjectCreator {
- public:
-  CBaseObjectCreatorByObj() {};
-  virtual ~CBaseObjectCreatorByObj() {};
+  public:
+    CBaseObjectCreatorByObj() {};
+    virtual ~CBaseObjectCreatorByObj() {};
 
- public:
-  virtual CBaseObject* CreateInstance(CBaseObject* obj) const = 0;
+  public:
+    virtual CBaseObject* CreateInstance(CBaseObject* obj) const = 0;
 };
 
 // Класс для создания объектов типа className, у которых конструктор принимает один аргумент типа objClassName
 template <class className, class objClassName> class CObjectCreaterByObj :
   public CBaseObjectCreatorByObj {
- public:
-  className* CreateInstance() const {
-    return NULL;
-  };
+  public:
+    className* CreateInstance() const {
+      return NULL;
+    };
 
-  className* CreateInstance(CBaseObject* obj) const {
-    return new className((objClassName*) obj);
-  };
+    className* CreateInstance(CBaseObject* obj) const {
+      return new className((objClassName*) obj);
+    };
 };
 
 // Класс, хранящий
@@ -50,41 +50,41 @@ template <class className, class objClassName> class CObjectCreaterByObj :
 // 2. имя класса
 // 3. тип класса - родителя
 class CObjectService {
- public:
-  CObjectService(std::string name, std::string type, CBaseObjectCreator* objectCreator);
+  public:
+    CObjectService(std::string name, std::string type, CBaseObjectCreator* objectCreator);
 
- public:
-  BOOL compareName(std::string name, std::string type);
-  CBaseObjectCreator* getObjectCreator();
+  public:
+    BOOL compareName(std::string name, std::string type);
+    CBaseObjectCreator* getObjectCreator();
 
- protected:
-  std::string name;
-  std::string type;
-  CBaseObjectCreator* objectCreator;
+  protected:
+    std::string name;
+    std::string type;
+    CBaseObjectCreator* objectCreator;
 };
 
 class CObjectClassManager {
- public:
-  CObjectClassManager();
-  virtual ~CObjectClassManager();
+  public:
+    CObjectClassManager();
+    virtual ~CObjectClassManager();
 
- public:
-  static CObjectClassManager& GetObjectClassManager();
+  public:
+    static CObjectClassManager& GetObjectClassManager();
 
-  CObjectService* GetObjectService(std::string name, std::string type);
+    CObjectService* GetObjectService(std::string name, std::string type);
 
-  CBaseObjectCreator* GetObjectCreator(std::string name, std::string type);
+    CBaseObjectCreator* GetObjectCreator(std::string name, std::string type);
 
-  CBaseObject* GetObject(std::string name, std::string type);
+    CBaseObject* GetObject(std::string name, std::string type);
 
-  CBaseObject* GetObject(std::string name, std::string type, CBaseObject* obj);
+    CBaseObject* GetObject(std::string name, std::string type, CBaseObject* obj);
 
-  void RegisterService(std::string name, std::string serviceType, CBaseObjectCreator* objectCreator);
+    void RegisterService(std::string name, std::string serviceType, CBaseObjectCreator* objectCreator);
 
-  void UnRegisterAllServices();
+    void UnRegisterAllServices();
 
- protected:
-  std::vector<CObjectService*> objectClassList;
+  protected:
+    std::vector<CObjectService*> objectClassList;
 };
 
 #define _CREATE_OBJECT(name, _className, descriptor) \

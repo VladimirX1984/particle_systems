@@ -5,45 +5,45 @@
 #include "FireworksVolleyBase.h"
 
 class CFireworksVolleySimple : public CFireworksVolleyBase {
- public:
-  CFireworksVolleySimple(void);
-  virtual ~CFireworksVolleySimple(void);
+  public:
+    CFireworksVolleySimple(void);
+    virtual ~CFireworksVolleySimple(void);
 
- protected:
-  override void SetParticleProperties(CParticle *particle);
+  protected:
+    virtual void SetParticleProperties(CParticle *particle) override;
 };
 
 //////////////////////////////////////////////////////////////////////////
 
 class CExplodeParticleSystem : public CParticleSystem {
- public:
-  CExplodeParticleSystem();
-  virtual ~CExplodeParticleSystem();
+  public:
+    CExplodeParticleSystem();
+    virtual ~CExplodeParticleSystem();
 
- protected:
-  override void SetParticleProperties(CParticle *particle);
+  protected:
+    virtual void SetParticleProperties(CParticle *particle) override;
 };
 
 class CFireworksVolleyExplode : public CFireworksVolleyBase {
- public:
-  CFireworksVolleyExplode(void);
-  virtual ~CFireworksVolleyExplode(void);
+  public:
+    CFireworksVolleyExplode(void);
+    virtual ~CFireworksVolleyExplode(void);
 
- protected:
-  override void SetParticleProperties(CParticle *particle);
+  protected:
+    virtual void SetParticleProperties(CParticle *particle) override;
 };
 
 //////////////////////////////////////////////////////////////////////////
 
 class CFireworksVolleyDouble : public CFireworksVolleyBase {
- public:
-  CFireworksVolleyDouble(void);
-  virtual ~CFireworksVolleyDouble(void);
+  public:
+    CFireworksVolleyDouble(void);
+    virtual ~CFireworksVolleyDouble(void);
 
- protected:
-  override void SetParticleProperties(CParticle *particle);
+  protected:
+    virtual void SetParticleProperties(CParticle *particle) override;
 
- private:
-  uint m_iCount;
+  private:
+    uint m_iCount;
 };
 
