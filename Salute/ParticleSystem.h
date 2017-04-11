@@ -22,7 +22,7 @@ class CParticleSystem : public CBaseObject {
     void SetPosition(CVector& position);
 
     // метод инициализации: count - число частиц
-    virtual bool Init(uint particleCount, std::string particleClassName);
+    virtual bool Init(uint particleCount, std::string& particleClassName);
 
     // установить св-ва для всех частиц системы
     virtual void Apply();

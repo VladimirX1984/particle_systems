@@ -34,7 +34,7 @@ bool CFireworksVolleyBase::Init(uint particleCount,
   }
   m_iSubParticleCount = subParticleCount;
   m_oRocketParticle = (CParticle*)CObjectClassManager::GetObjectClassManager().GetObject(
-                        particleClassName, "CParticle");
+                        particleClassName, std::string("CParticle"));
   if (m_oRocketParticle == NULL) {
     std::string sMsg = "Класс частицы залпа '" + particleClassName +
                        "' не определен в системе.";
@@ -47,7 +47,7 @@ bool CFireworksVolleyBase::Init(uint particleCount,
     for (uint i = 0; i < particleCount; ++i) {
       CParticleSystem *subParticleSystem = (CFireworksVolleyBase*)
                                            CObjectClassManager::GetObjectClassManager().GetObject(subParticleSystemClassName,
-                                               "CParticleSystem");
+                                               std::string("CParticleSystem"));
       if (!subParticleSystem) {
         std::string sMsg = "Класс подсистемы частиц '" + subParticleSystemClassName +
                            "' не определен в системе.";

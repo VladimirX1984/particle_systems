@@ -92,7 +92,7 @@ bool CSaluteManager::Init(uint volleysCount, uint particlesCount, uint interval)
       TSaluteType *pSaluteType = *it;
       CFireworksVolleyBase *fireworksVolley = (CFireworksVolleyBase*)
                                               CObjectClassManager::GetObjectClassManager().GetObject(
-                                                pSaluteType->m_sFireworksVolleyClassName, "CFireworksVolleyBase");
+                                                pSaluteType->m_sFireworksVolleyClassName, std::string("CFireworksVolleyBase"));
       if (!fireworksVolley) {
         std::string sMsg = "Класс залпа салюта '" + pSaluteType->m_sFireworksVolleyClassName
                            + "' не определен в системе.";

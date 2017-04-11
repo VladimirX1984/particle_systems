@@ -16,12 +16,12 @@ CParticleSystem::~CParticleSystem(void) {
   m_particleList.clear();
 }
 
-bool CParticleSystem::Init(uint particleCount, std::string particleClassName) {
+bool CParticleSystem::Init(uint particleCount, std::string& particleClassName) {
   // Инициализация всех частиц
   for (uint i = 0; i < particleCount; ++i) {
 
     CParticle *particle = (CParticle*)CObjectClassManager::GetObjectClassManager().GetObject(
-                            particleClassName, "CParticle");
+                            particleClassName, std::string("CParticle"));
     if (particle == NULL) {
       std::string sMsg = "Класс частицы '" + particleClassName +
                          "' не определен в системе.";

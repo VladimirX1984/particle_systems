@@ -51,10 +51,10 @@ template <class className, class objClassName> class CObjectCreaterByObj :
 // 3. тип класса - родителя
 class CObjectService {
   public:
-    CObjectService(std::string name, std::string type, CBaseObjectCreator* objectCreator);
+    CObjectService(std::string& name, std::string& type, CBaseObjectCreator* objectCreator);
 
   public:
-    BOOL compareName(std::string name, std::string type);
+    BOOL compareName(std::string& name, std::string& type);
     CBaseObjectCreator* getObjectCreator();
 
   protected:
@@ -71,13 +71,13 @@ class CObjectClassManager {
   public:
     static CObjectClassManager& GetObjectClassManager();
 
-    CObjectService* GetObjectService(std::string name, std::string type);
+    CObjectService* GetObjectService(std::string& name, std::string& type);
 
-    CBaseObjectCreator* GetObjectCreator(std::string name, std::string type);
+    CBaseObjectCreator* GetObjectCreator(std::string& name, std::string& type);
 
-    CBaseObject* GetObject(std::string name, std::string type);
+    CBaseObject* GetObject(std::string& name, std::string& type);
 
-    CBaseObject* GetObject(std::string name, std::string type, CBaseObject* obj);
+    CBaseObject* GetObject(std::string& name, std::string& type, CBaseObject* obj);
 
     void RegisterService(std::string name, std::string serviceType, CBaseObjectCreator* objectCreator);
 
