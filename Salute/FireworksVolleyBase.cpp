@@ -179,7 +179,7 @@ void CFireworksVolleyBase::DrawMe() {
   }
 
   if (m_bLive && !m_particleSystemQueue.empty()) {
-    for each (CParticleSystem * particleSystem in m_particleSystemQueue._Get_container()) {
+    for each (auto particleSystem in m_particleSystemQueue._Get_container()) {
       particleSystem->Draw();
     }
   }

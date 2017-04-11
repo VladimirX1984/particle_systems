@@ -2,8 +2,7 @@
 
 #pragma region CBaseObject
 
-CBaseObject::CBaseObject() {
-  m_bActive = true;
+CBaseObject::CBaseObject() : m_bActive(true) {
 }
 
 CBaseObject::~CBaseObject() {

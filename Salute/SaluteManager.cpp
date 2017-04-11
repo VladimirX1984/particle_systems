@@ -127,7 +127,7 @@ bool CSaluteManager::Init(uint volleysCount, uint particlesCount, uint interval)
 }
 
 void CSaluteManager::UpdateMe() {
-  for each (CFireworksVolleyBase * fireworksVolley in m_fireworksVolleyQueue._Get_container()) {
+  for each (auto fireworksVolley in m_fireworksVolleyQueue._Get_container()) {
     fireworksVolley->Update();
   }
 

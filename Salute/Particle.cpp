@@ -2,13 +2,8 @@
 
 #include "Particle.h"
 
-CParticle::CParticle(void) : CBaseObject() {
-  m_iType = D_POINT;
-  m_fLife = 0.0f;
-  m_fFade = 0.005f;
-  m_fMass = 1.0f;
-  m_fSize = 1.0f;
-  m_fAirResistance = 0.0f;
+CParticle::CParticle(void) : CBaseObject(),
+  m_iType(D_POINT), m_fLife(0.f), m_fFade(0.005f), m_fMass(1.f), m_fSize(1.f), m_fAirResistance(0.f) {
 }
 
 CParticle::~CParticle(void) {

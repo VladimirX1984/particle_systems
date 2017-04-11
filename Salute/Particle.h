@@ -6,7 +6,7 @@
 // Частица
 class CParticle : public CBaseObject {
   public:
-    enum { D_POINT, D_POINT_RAND, D_LINE, D_TRIANGLE};
+    enum : unsigned int { D_POINT, D_POINT_RAND, D_LINE, D_TRIANGLE};
 
     CParticle(void);
     virtual ~CParticle(void);

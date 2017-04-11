@@ -2,9 +2,8 @@
 #include "ParticleSystem.h"
 #include "Particle.h"
 
-CParticleSystem::CParticleSystem(void) : CBaseObject() {
-  m_oPosition = CVector(0.0f, 0.0f, 0.0f);
-  m_bLive = false;
+CParticleSystem::CParticleSystem(void) : CBaseObject(),
+  m_oPosition(CVector(0.0f, 0.0f, 0.0f)), m_bLive(false) {
 }
 
 CParticleSystem::~CParticleSystem(void) {
